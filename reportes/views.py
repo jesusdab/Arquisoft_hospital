@@ -24,3 +24,16 @@ def consultaPaciente(request, paciente_id):
     except Exception as e:
         # Manejo de errores
         return JsonResponse({'error': str(e)}, status=500)
+    
+def menuDoctor(request):
+    nombreDoc = request.user.username
+    # Renderizar la plantilla del menú del doctor
+    return render(request, 'menuConsulta.html')
+
+def pacientes(request):
+    # Obtener todos los pacientes
+    pacientes = Paciente.objects.all()
+    
+    # Renderizar la plantilla con la lista de pacientes
+    return render(request, 'pacientes.html', {'pacientes': pacientes})
+

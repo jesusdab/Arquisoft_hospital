@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pacientes</title>
+  <style>
+    /* General */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    /* Barra lateral */
+    .sidebar {
+      width: 200px;
+      height: 100vh;
+      background-color: rgb(64, 123, 182);
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .sidebar h3 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: rgb(67, 133, 199);
+    }
+
+    /* Contenido principal */
+    .content {
+      margin-left: 200px; /* Asegura que el contenido no se solape con la barra lateral */
+      padding: 20px;
+      width: calc(100% - 200px); /* Resta el ancho de la barra lateral */
+      box-sizing: border-box; /* Asegura que padding no sume al tamaño total */
+    }
+
+    /* Tabla */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: rgb(64, 123, 182);
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h3>Menú</h3>
+    <a href="/reportes/consultas">Inicio</a>
+    <a href="/reportes/consultas/pacientes/">Consulta</a>
+    <a href="/reportes/nueva-historia/">Nuevo Paciente</a>
+    <a href="/logout/">Cerrar sesión</a>
+  </div>
+
+  <div class="content">
+    <h1>Lista de Pacientes</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for paciente in pacientes %}
+        <tr>
+            <td><a href="{% url 'consulta_paciente' paciente_id=paciente.id %}">{{ paciente.usuario.nombre }}</a></td>
+            <td>{{ paciente.edad }}</td>
+            <td>{{ paciente.email}}</td>
+            <td>{{ paciente.telefono }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="2">No hay pacientes registrados.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
