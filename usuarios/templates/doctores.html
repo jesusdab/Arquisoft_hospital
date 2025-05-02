@@ -1,0 +1,9 @@
+<h1> Nuestros doctores</h1>
+
+{% for doctor in doctores %}
+    <h2>{{ doctor.nombre }}</h2>
+    <p>Especialidad: {{ doctor.especialidad }}</p>
+    <p>Teléfono: {{ doctor.telefono }}</p>
+    <p>Email: {{ doctor.email }}</p>
+    <hr>
+{% endfor %}

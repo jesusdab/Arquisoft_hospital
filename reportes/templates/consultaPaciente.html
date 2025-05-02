@@ -1,0 +1,20 @@
+<h2>{{ paciente.usuario.nombre }}</h2>
+<p>Email: {{ paciente.email }}</p>
+<p>Edad: {{ paciente.edad }}</p>
+<p>Teléfono: {{ paciente.telefono }}</p>
+
+<h3>Historias Clínicas</h3>
+{% if historiaClinica %}
+  <ul>
+    {% for historia in historiaClinica %}
+      <li>
+        <strong>Tipo de sangre:</strong> {{ historia.tipo_sangre }} <br>
+        <strong>Alergias:</strong> {{ historia.alergia_medicamentos }} <br>
+        <strong>Antecedentes:</strong> {{ historia.antecedentes }} <br>
+        <strong>Condiciones médicas:</strong> {{ historia.condiciones_medicas }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No hay historias clínicas registradas.</p>
+{% endif %}
