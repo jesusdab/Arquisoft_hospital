@@ -1,7 +1,10 @@
+{% extends 'consultaPacienteBase.html' %}
+
+{% block content %}
 <h2>{{ paciente.usuario.nombre }}</h2>
-<p>Email: {{ paciente.email }}</p>
-<p>Edad: {{ paciente.edad }}</p>
-<p>Teléfono: {{ paciente.telefono }}</p>
+<p><strong>Email:</strong> {{ paciente.email }}</p>
+<p><strong>Edad:</strong> {{ paciente.edad }}</p>
+<p><strong>Teléfono:</strong> {{ paciente.telefono }}</p>
 
 <h3>Historias Clínicas</h3>
 {% if historiaClinica %}
@@ -18,3 +21,4 @@
 {% else %}
   <p>No hay historias clínicas registradas.</p>
 {% endif %}
+{% endblock %}
