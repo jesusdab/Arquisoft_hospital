@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-uzg+38yz=br)acku(t4q(s&4&^@f&)=e($iq!lf=s=_6g*2u(7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'appBase.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'monitoring_db',
+	'USER': 'hospital_user',
+        'PASSWORD': 'isis2503',
+        'HOST': '10.128.0.3',
+        'PORT': '',
     }
 }
 
