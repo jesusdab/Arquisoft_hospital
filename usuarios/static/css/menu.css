@@ -1,0 +1,39 @@
+.navbar-custom {
+    background-color: #f8f9fa; /* color de fondo opcional */
+    padding: 20px 20px;
+    justify-content: start; /* alineación a la izquierda */
+  }
+  
+  .navbar-custom a {
+    margin-right: 50px; /* separación entre enlaces */
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .navbar-custom a:hover {
+    color: #007bff; /* efecto hovers */
+  }
+
+/* Contenedor para el enlace de login */
+.contenedor-login {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    z-index: 5; /* Enlaces deben estar por encima de la imagen */
+}
+
+.contenedor-login a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(192, 235, 255, 0.7);
+    padding: 8px 8px;
+    font-size: 20px;
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 1;
+}

@@ -10,8 +10,8 @@ def index(request):
 def hello(request, username):
     return HttpResponse("hello world %s" % username)
 
-def about(request):
-    return HttpResponse("about page")
+def menu(request):
+    return render(request,"menu.html")
 
 def projects(request):
     projects = list(Project.objects.values())
@@ -24,4 +24,5 @@ def tasks(request):
 def doctores(request):
     doctors = list(Doctor.objects.values())
     return render(request, 'doctores.html', 
-                  {'doctores': doctors})
+                {'doctores': doctors})
+
