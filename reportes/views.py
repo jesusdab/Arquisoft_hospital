@@ -10,6 +10,7 @@ from .utils import retry_operation
 @retry_operation(max_retries=5, delay=2, exponential_backoff=True)
 def consultaPaciente(request, paciente_id):
     try:
+        
         #consultaPaciente: Vista para consultar la historia clínica de un paciente.
         # Obtener el paciente por su ID
         paciente = get = get_object_or_404(Paciente, id=paciente_id)
