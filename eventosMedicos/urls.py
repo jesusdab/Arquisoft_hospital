@@ -12,4 +12,6 @@ urlpatterns = [
     path('telemedicina', views.telemedicina, name='telemedicina'),
     path('vacunacion', views.vacunacion, name='vacunacion'),
     path('atencion-domiciliaria', views.atencion_domiciliaria, name='atencion_domiciliaria'),
+    path('consultar/', views.consultar, name='consultar'),
+    path('perfil/', views.perfil_paciente, name='perfil_paciente'),
 ]

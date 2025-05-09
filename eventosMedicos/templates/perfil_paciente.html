@@ -1,18 +1,16 @@
-<!-- filepath: /Users/jesusalvernia/sprint 3-2/Arquisoft_hospital/reportes/templates/consultaPaciente.html -->
-{% extends 'consultaPacienteBase.html' %}
+<!-- filepath: /Users/jesusalvernia/sprint 3-2/Arquisoft_hospital/reportes/templates/perfil_paciente.html -->
+{% extends 'base.html' %}
 
 {% block content %}
-<h2>{{ paciente.usuario.nombre }}</h2>
+<h2>Perfil de {{ paciente.usuario.first_name }}</h2>
 <p><strong>Email:</strong> {{ paciente.email }}</p>
 <p><strong>Edad:</strong> {{ paciente.edad }}</p>
 <p><strong>Teléfono:</strong> {{ paciente.telefono }}</p>
 
-<a href="{% url 'editar_paciente' paciente.id %}">Editar Información del Paciente</a>
-
 <h3>Historias Clínicas</h3>
-{% if historiaClinica %}
+{% if historias_clinicas %}
   <ul>
-    {% for historia in historiaClinica %}
+    {% for historia in historias_clinicas %}
       <li>
         <strong>Tipo de sangre:</strong> {{ historia.tipo_sangre }} <br>
         <strong>Alergias:</strong> {{ historia.alergia_medicamentos }} <br>
@@ -22,6 +20,6 @@
     {% endfor %}
   </ul>
 {% else %}
-  <p>No hay historias clínicas registradas.</p>
+  <p>No tienes historias clínicas registradas.</p>
 {% endif %}
 {% endblock %}

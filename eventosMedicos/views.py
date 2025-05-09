@@ -1,7 +1,9 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
-
 from eventosMedicos.models import Cita
+from eventosMedicos.models import HistoriaClinica
+from .models import Paciente
+from django.contrib.auth.decorators import login_required
 
 def healthCheck(request):
     return HttpResponse('ok')
@@ -57,3 +59,18 @@ def vacunacion(request):
 
 def atencion_domiciliaria(request):
     return render(request, 'domi.html')
+
+def consultar(request):
+    return redirect('/reportes/consultas/pacientes/')
+
+def perfil_paciente(request):
+    # Obtiene el paciente autenticado
+    paciente = get_object_or_404(Paciente, usuario=request.user)
+
+    # Obtiene la historia clínica asociada al paciente autenticado
+    historias_clinicas = HistoriaClinica.objects.filter(paciente=paciente)
+
+    return render(request, 'perfil_paciente.html', {
+        'paciente': paciente,
+        'historias_clinicas': historias_clinicas
+    })

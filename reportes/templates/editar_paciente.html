@@ -1,0 +1,22 @@
+{% extends 'consultaPacienteBase.html' %}
+
+{% block content %}
+<h2>Editar Información del Paciente</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ paciente.usuario.first_name }}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="{{ paciente.email }}" required>
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" value="{{ paciente.edad }}" required>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" name="telefono" value="{{ paciente.telefono }}" required>
+
+    <button type="submit">Guardar Cambios</button>
+</form>
+<a href="{% url 'consulta_paciente' paciente.id %}">Cancelar</a>
+{% endblock %}

@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class EventoMedico(models.Model):
@@ -43,4 +45,26 @@ class Cita(models.Model):
 
     def __str__(self):
         return f"{self.medico} - {self.especialidad} ({self.fecha} {self.hora})"
+    
+class Paciente(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)  # Relación con el modelo User
+    email = models.EmailField()
+    edad = models.PositiveIntegerField()
+    telefono = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.usuario.first_name
+    
+class HistoriaClinica(models.Model):
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='historias_clinicas')
+    tipo_sangre = models.CharField(max_length=3)
+    alergia_medicamentos = models.TextField(blank=True, null=True)
+    antecedentes = models.TextField(blank=True, null=True)
+    condiciones_medicas = models.TextField(blank=True, null=True)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Historia de {self.paciente.usuario.first_name} - {self.doctor.username}"
+
     
